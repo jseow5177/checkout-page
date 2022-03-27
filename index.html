@@ -1,95 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1,
-  maximum-scale=5"
-    />
-
-    <link rel="icon" href="devchallenges.png" />
-
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="https://devchallenges.io/"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-
-    <title>Devchallenges</title>
-
-    <style>
-      body {
-        font-family: "Poppins", sans-serif;
-      }
-
-      ul {
-        padding-left: 24px;
-      }
-
-      li {
-        margin-bottom: 8px;
-      }
-
-      .welcome {
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .welcome-text {
-        margin-top: 30vh;
-        font-weight: 500;
-      }
-
-      .welcome-text p {
-        font-size: 1rem;
-        font-weight: 400;
-      }
-
-      .welcome-text h1 {
-        font-size: 1.5rem;
-      }
-
-      .welcome-text a {
-        color: #f7542e;
-      }
-    </style>
+    <link rel="stylesheet" href="./index.css" />
+    <title>Checkout</title>
   </head>
   <body>
-    <div class="welcome">
-      <div class="welcome-text">
-        <h1>
-          Welcome to
-          <a href="https://devchallenges.io/" target="_blank"
-            >devchallenges.io</a
-          >
-        </h1>
-
-        <p>
-          If you have any questions, don't hesitate to ask on Discord. Here are
-          7 general steps to complete the challenge:
-        </p>
-      </div>
-
-      <ul>
-        <li><b>Step 1:</b> Create a new repository on github</li>
-        <li><b>Step 2:</b> Copy resources, README.md to your repository</li>
-        <li>
-          <b>Step 3:</b> Login to Figma to checkout font, color, spacing,..
-        </li>
-        <li><b>Step 4:</b> Complete all user stories</li>
-        <li><b>Step 5:</b> Update README.md</li>
-        <li><b>Step 6:</b> Deploy your app and submit your solution</li>
-        <li>
-          <b>Step 7:</b> Share your solution on Discord, Twitter and other
-          platforms to ask for feedback
-        </li>
-      </ul>
+    <!-- Snackbar -->
+    <div class="snackbar">
+      <p>Form is submitted!</p>
     </div>
+    <header>
+      <h1>Checkout</h1>
+    </header>
+    <main>
+      <section class="main__form">
+        <form id="checkout-form" novalidate>
+          <div class="form__section">
+            <!-- Contact Information -->
+            <h2 class="form__title">Contact Information</h2>
+            <div class="input__row">
+              <!-- Email -->
+              <label for="email">Email</label>
+              <div class="form__input">
+                <span class="material-icons">email</span>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email..."
+                />
+              </div>
+              <p id="email-error" class="input-error-msg"></p>
+            </div>
+            <div class="input__row">
+              <!-- Phone -->
+              <label for="phone">Phone</label>
+              <div class="form__input">
+                <span class="material-icons">phone</span>
+                <input
+                  id="phone"
+                  type="phone"
+                  name="phone"
+                  placeholder="Enter your phone..."
+                />
+              </div>
+              <p id="phone-error" class="input-error-msg"></p>
+            </div>
+          </div>
+          <div class="form__section">
+            <!-- Shipping Address -->
+            <h2 class="form__title">Shipping Address</h2>
+            <div class="input__row">
+              <!-- Full Name -->
+              <label for="name">Full Name</label>
+              <div class="form__input">
+                <span class="material-icons">account_circle</span>
+                <input
+                  id="name"
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name..."
+                />
+              </div>
+              <p id="name-error" class="input-error-msg"></p>
+            </div>
+            <div class="input__row">
+              <!-- Address -->
+              <label for="address">Address</label>
+              <div class="form__input">
+                <span class="material-icons">home</span>
+                <input
+                  id="address"
+                  type="text"
+                  name="address"
+                  placeholder="Enter your address..."
+                />
+              </div>
+              <p id="address-error" class="input-error-msg"></p>
+            </div>
+            <div class="input__row">
+              <!-- City -->
+              <label for="city">City</label>
+              <div class="form__input">
+                <span class="material-icons">location_city</span>
+                <input
+                  id="city"
+                  type="text"
+                  name="city"
+                  placeholder="Enter your city..."
+                />
+              </div>
+              <p id="city-error" class="input-error-msg"></p>
+            </div>
+            <div class="form__row">
+              <div class="dropdown">
+                <div class="input__row">
+                  <!-- Country -->
+                  <label for="country">Country</label>
+                  <div class="form__input">
+                    <span class="material-icons">public</span>
+                    <input
+                      id="country"
+                      type="text"
+                      name="country"
+                      placeholder="Choose your country..."
+                      class="dropdown__trigger"
+                      onclick="openDropdown()"
+                      readonly
+                    />
+                  </div>
+                  <p id="country-error" class="input-error-msg"></p>
+                </div>
+                <div class="dropdown__content">
+                  <li
+                    id="Malaysia"
+                    class="dropdown__item"
+                    onclick="selectDropdownValue(this.id)"
+                  >
+                    Malaysia
+                  </li>
+                  <li
+                    id="Singapore"
+                    class="dropdown__item"
+                    onclick="selectDropdownValue(this.id)"
+                  >
+                    Singapore
+                  </li>
+                  <li
+                    id="Indonesia"
+                    class="dropdown__item"
+                    onclick="selectDropdownValue(this.id)"
+                  >
+                    Indonesia
+                  </li>
+                </div>
+              </div>
+              <div class="input__row">
+                <!-- Postal Code -->
+                <label for="postal_code">Postal Code</label>
+                <div class="form__input">
+                  <span class="material-icons">markunread_mailbox</span>
+                  <input
+                    id="postal_code"
+                    type="number"
+                    name="postal_code"
+                    placeholder="Your postal code..."
+                  />
+                </div>
+                <p id="postal_code-error" class="input-error-msg"></p>
+              </div>
+            </div>
+            <div class="form__input--checkbox">
+              <input id="save" type="checkbox" name="save" checked="checked" />
+              <label for="save">Save this information for next time</label>
+            </div>
+          </div>
+          <div class="form__submit">
+            <input type="submit" value="Continue" />
+          </div>
+        </form>
+      </section>
+      <section class="main__checkout">
+        <div class="checkout">
+          <div class="checkout__products">
+            <div class="product__row">
+              <img src="photo1.png" class="product__img" />
+              <div class="product__info">
+                <div>
+                  <h2 class="product__title">Vintage Backbag</h2>
+                  <p class="price discount-price">$54.99</p>
+                  <p class="price ori-price">$94.99</p>
+                </div>
+                <div class="product__counter">
+                  <button class="action-btn">
+                    <span class="material-icons"> remove </span>
+                  </button>
+                  <p class="product__count">1</p>
+                  <button class="action-btn">
+                    <span class="material-icons"> add </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product__row">
+              <img src="photo2.png" class="product__img" />
+              <div class="product__info">
+                <div>
+                  <h2 class="product__title">Levi Shoes</h2>
+                  <p class="price discount-price">$74.99</p>
+                  <p class="price ori-price">$124.99</p>
+                </div>
+                <div class="product__counter">
+                  <button class="action-btn">
+                    <span class="material-icons"> remove </span>
+                  </button>
+                  <p class="product__count">1</p>
+                  <button class="action-btn">
+                    <span class="material-icons"> add </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="checkout__price">
+            <p>Shipping</p>
+            <p>$19</p>
+          </div>
+          <div class="checkout__price">
+            <p>Total</p>
+            <p>$148.98</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>created by jonathan.seow - devChallenges.io</p>
+    </footer>
+    <script src="./index.js"></script>
   </body>
 </html>
